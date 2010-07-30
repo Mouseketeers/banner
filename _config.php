@@ -1,3 +1,3 @@
 <?php
-DataObject::add_extension('Page', 'Banner');
+DataObject::add_extension('Page', 'PageBanner');
 ?>
