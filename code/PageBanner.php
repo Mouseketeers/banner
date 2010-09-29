@@ -2,6 +2,7 @@
 class PageBanner extends SiteTreeDecorator {
 	
 	static $defaultBannerImageURL = '';
+	static $alternativeCMSLabel = '';
 	
 	function extraStatics() {
 		return array(
@@ -11,7 +12,8 @@ class PageBanner extends SiteTreeDecorator {
 		);
 	}
 	function updateCMSFields(&$fields){
-		$fields->addFieldToTab('Root.Content.Main', new ImageField('BannerImage', 'Banner Image',null,null,null,'Bannere'));
+		$label = (self::$alternativeCMSLabel) ? self::$alternativeCMSLabel : 'Banner Image';
+		$fields->addFieldToTab('Root.Content.Main', new ImageField('BannerImage', $label));
 		return $fields;
 	}
 	function SetDefaultBannerImage($url='') {
