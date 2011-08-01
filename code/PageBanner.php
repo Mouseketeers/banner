@@ -77,7 +77,6 @@ class PageBanner extends DataObjectDecorator {
 	}
 	/*function getBannerImage() {
 		$bannerImage = $this->owner->BannerImage();
-		
 		if(self::$inherit_parent_banner && !$bannerImage->ID) {
 			$parents = $this->Parents();
 			foreach($parents as $parent) {
@@ -99,4 +98,3 @@ class PageBanner extends DataObjectDecorator {
 		return $output;
 	}
 }
-?>
