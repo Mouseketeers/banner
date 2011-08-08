@@ -8,6 +8,7 @@ class PageBanner extends DataObjectDecorator {
 	function extraStatics() {
 		return array(
 			'db' => array(
+				'BannerContent' => 'HTMLText',
 				'BannerLinkTitle' => 'Varchar(255)',
 				'BannerWidth' => 'Varchar',
 				'BannerHeight' => 'Varchar'
@@ -15,7 +16,6 @@ class PageBanner extends DataObjectDecorator {
 			'has_one' => array(
 				'BannerImage' => 'Image',
 				'BannerFlashFile' => 'File',
-
 				'BannerLink' => 'SiteTree'
 			)
 		);
@@ -30,6 +30,7 @@ class PageBanner extends DataObjectDecorator {
 
 		$fields->addFieldsToTab('Root.Content.Banner', array(
 			new FileUploadField('BannerImage', $label),
+			new SimpleTinyMCEField('BannerContent','Content'),
 			$PageDropDown,
 			new TextField('BannerLinkTitle', 'Link text')
 		));
