@@ -38,6 +38,7 @@ class PageBannerDecorator extends DataObjectDecorator {
 			'PageBanner',
 			array(
 				'ThumbmailOfBannerImage' => 'Image',
+				'ImageTitle' => 'Banner Image Title',
 				'BannerLinkURL' => 'Links to',
 				'IfDefaultBanner' => 'Default banner?'
 			),

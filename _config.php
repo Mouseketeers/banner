@@ -1,5 +1,5 @@
 <?php
-//DataObject::add_extension('Page', 'PageBanner');
+//DataObject::add_extension('Page', 'PageBannerDecorator');
 //PageBanner::enableInheritance
 //PageBanner::enableContent();
 //PageBanner::setDefaultBannerImage($url)

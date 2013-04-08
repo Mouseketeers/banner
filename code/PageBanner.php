@@ -32,6 +32,9 @@ class PageBanner extends DataObject {
 	function getIfDefaultBanner() {
 		if($this->DefaultBanner) return 'Default';
 	}
+	function getImageTitle() {
+		return $this->BannerImage()->Title;
+	}
 	function getThumbmailOfBannerImage() {
 		return $this->BannerImage()->StripThumbnail();
 	}
