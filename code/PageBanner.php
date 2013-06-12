@@ -1,8 +1,5 @@
 <?php 
 class PageBanner extends DataObject {
-	static $inherit_parent_banner = true;
-	static $use_default_banner = true;
-	static $content_enabled = false;
 
 	static $db =  array(
 		'BannerContent' => 'HTMLText',
@@ -18,9 +15,15 @@ class PageBanner extends DataObject {
 	);
 	function getCMSFields_forPopup() {
 		$fields = new FieldSet();
-
 		$fields->push( new FileUploadField('BannerImage', "Banner Image" ));
-		
+		if(PageBannerDecorator::$content_enabled) {
+			if (PageBannerDecorator::$enable_html_editor) {
+				$fields->push( new SimpleTinyMCEField('BannerContent','Content'));
+			}
+			else {
+				$fields->push( new TextAreaField('BannerContent','Content'));
+			}
+		}
 		$page_dropdown = new SimpleTreeDropdownField('BannerLinkID', 'Link to page');
 		$page_dropdown->setEmptyString('-- None --');
 		$fields->push( $page_dropdown );
@@ -34,6 +37,9 @@ class PageBanner extends DataObject {
 	}
 	function getImageTitle() {
 		return $this->BannerImage()->Title;
+	}
+	function getContentSummary() {
+		return $this->dbObject('BannerContent')->Summary();
 	}
 	function getThumbmailOfBannerImage() {
 		return $this->BannerImage()->StripThumbnail();

@@ -1,9 +1,10 @@
 <?php
 class PageBannerDecorator extends DataObjectDecorator {
-	static $alternativeCMSLabel = '';
-	static $inherit_parent_banner = true;
-	static $use_default_banner = true;
-	static $content_enabled = false;
+
+	public static $inherit_parent_banner = true;
+	public static $use_default_banner = true;
+	public static $content_enabled = false;
+	public static $enable_html_editor = false;
 
 	function extraStatics() {
 		return array(
@@ -32,16 +33,18 @@ class PageBannerDecorator extends DataObjectDecorator {
 		}
 	}
 	function updateCMSFields(&$fields){
+		$summary_fields = array();
+		$summary_fields['ThumbmailOfBannerImage'] = 'Image';
+		$summary_fields['ImageTitle'] = 'Banner Image Title';
+		if(self::$content_enabled) $summary_fields['ContentSummary'] = 'BannerContent';
+		$summary_fields['BannerLinkURL'] = 'Links to';
+		if(self::$use_default_banner) $summary_fields['IfDefaultBanner'] = 'Default banner?';
+
 		$manager = new HasOneDataObjectManager(
 			$this->owner,
 			'PageBanner',
 			'PageBanner',
-			array(
-				'ThumbmailOfBannerImage' => 'Image',
-				'ImageTitle' => 'Banner Image Title',
-				'BannerLinkURL' => 'Links to',
-				'IfDefaultBanner' => 'Default banner?'
-			),
+			$summary_fields,
 			'getCMSFields_forPopup'
 		);
 		$manager->setParentClass('Page');
@@ -54,6 +57,11 @@ class PageBannerDecorator extends DataObjectDecorator {
 	public function enableContent($option = true) {
 		self::$content_enabled = $option;
 	}
+	public function enableHTMLEditor($option = true) {
+		if ($option) self::enableContent();
+		self::$enable_html_editor = $option;		
+	}
+
 	public function useDefaultBanner($option = true) {
 		self::$use_default_banner = $option;
 	}
