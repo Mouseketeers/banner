@@ -2,6 +2,7 @@
 class PageBanner extends DataObject {
 
 	static $db =  array(
+		'BannerTitle' => 'Varchar(255)',
 		'BannerContent' => 'HTMLText',
 		'BannerLinkTitle' => 'Varchar(255)',
 		'BannerWidth' => 'Varchar',
@@ -17,6 +18,7 @@ class PageBanner extends DataObject {
 		$fields = new FieldSet();
 		$fields->push( new FileUploadField('BannerImage', "Banner Image" ));
 		if(PageBannerDecorator::$content_enabled) {
+			$fields->push( new TextField('BannerTitle','Title'));
 			if (PageBannerDecorator::$enable_html_editor) {
 				$fields->push( new SimpleTinyMCEField('BannerContent','Content'));
 			}
@@ -30,6 +32,7 @@ class PageBanner extends DataObject {
 		if(PageBannerDecorator::$use_default_banner) {
 			$fields->push( new CheckboxField('DefaultBanner', 'Set this as the default banner' ));
 		}
+		$fields->push( new LiteralField('DOM-fix','<div style="height:35px">&nbsp;</div>'));
 		return $fields;
 	}
 	function getIfDefaultBanner() {
