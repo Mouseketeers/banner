@@ -4,4 +4,4 @@
 //PageBanner::enableContent();
 //PageBanner::setDefaultBannerImage($url)
 // <% include Banner %>
-?>
+if (class_exists('Subsite')) Object::add_extension('PageBanner', 'PageBannerSubsites');
