@@ -1,6 +1,7 @@
 <?php
 //DataObject::add_extension('Page', 'PageBannerDecorator');
-//PageBannerDecorator::enableInheritance
-//PageBannerDecorator::enableContent();
-//PageBannerDecorator::enableHTMLEditor();
+//PageBanner::enableInheritance
+//PageBanner::enableContent();
+//PageBanner::setDefaultBannerImage($url)
 // <% include Banner %>
+if (class_exists('Subsite')) Object::add_extension('PageBanner', 'PageBannerSubsites');

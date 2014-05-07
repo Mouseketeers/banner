@@ -1,0 +1,19 @@
+{
+	"name": "mouseketeers/silverstripe-banner",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "banner"],
+	"description": "SilverStripe module for adding banner images to pages",
+	"license": "BSD-3-Clause",
+	"authors": [
+	{
+			"name": "Henrik Olsen",
+			"homepage": "http://www.mouseketeers.dk",
+			"email": "henrik@mouseketeers.dk"
+		}
+	
+	],
+	"require": {
+		"silverstripe/framework": "2.4.*",
+		"silverstripe/cms": "2.4.*"
+	}
+}
